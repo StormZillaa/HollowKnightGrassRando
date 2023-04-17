@@ -10,10 +10,15 @@ NOTE 2: This randomizer mod is a work in progress, some of the grass randomly wi
 
 # Required Mods
 RandomizerCore
+
 Randomizer4
+
 RandoPlus
+
 ItemChanger
+
 MapChanger
+
 ManuChanger
 
 # TODO

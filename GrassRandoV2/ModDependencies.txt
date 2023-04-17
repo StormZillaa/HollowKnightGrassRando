@@ -1,0 +1,8 @@
+ItemChanger
+MenuChanger
+Randomizer 4
+RandomizerCore
+Satchel
+RandoPlus
+RandoMapMod
+MapChanger

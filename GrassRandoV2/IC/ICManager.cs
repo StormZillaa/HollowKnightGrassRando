@@ -163,6 +163,8 @@ namespace GrassRandoV2.IC
                     }
                 };
 
+                //GSL.Init();
+
                bgl.Add(GSL);
 
                 //sets up the item deferninition for the item changer mod

@@ -26,51 +26,102 @@ namespace GrassRandoV2.IC
 
         public void Init()
         {
+            //this is the hook i assumed would work
+            //however, it appears it misses some grass
             ModHooks.SlashHitHook += hitInst;
-            //On.GrassCut.ShouldCut += HandleShouldCut;
-            //isGrass = false;
-            Modding.Logger.Log("Loaded a grass: " + gd.getTermName());
+
+            //my attempt at adding redundancy to the cutting trigger of the grass
+            //On.GrassCut.ShouldCut += cutInst; //note: this did not change much :/
+
+
+            //logger to make sure all of the grass is actually loaded for debugging purposes
+            //believe or not, this is *very* slow
+            //Modding.Logger.Log("Loaded a grass: " + gd.getTermName());
         }
 
+        private bool cutInst(On.GrassCut.orig_ShouldCut orig, Collider2D collision)
+        {
+            bool isCut = orig(collision);
+
+            try
+            {
+                if (isCut)
+                {
+                    if (isMe(collision) && !Placement.AllObtained())
+                    {
+                        //logger to make sure only new grass was being seen
+                        //Modding.Logger.Log("Broke a new grass!" + otherCollider.name.ToString() + " " + otherCollider.gameObject.scene.name.ToString());
+
+                        //logs the grass that was broken in a usable format for debugging
+                        Modding.Logger.Log(collision.gameObject.name.ToString() + ", " + gd.usrName);
+
+                        //attempts to give the player the item
+                        Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = MessageType.None });
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Modding.Logger.LogError("Error in cutInst: " + e.ToString());
+            }
+
+            return isCut;
+        }
 
         private bool isMe(Collider2D otherCollider)
         {
+            //Modding.Logger.Log("Collider name: " + otherCollider.name);
+
+            //makes sure the game object is actually grass
+            if (!otherCollider.name.ToLower().Contains("grass")) { return false; }
+
+            //gets the rough locations of the current grass
             int cldX = (int)Math.Round(otherCollider.bounds.center.x);
             int cldY = (int)Math.Round(otherCollider.bounds.center.y);
 
+            //gets the location of the grass from the list
             int tmpX = (int)Math.Round(gd.locations[0].x);
             int tmpY = (int)Math.Round(gd.locations[0].y);
 
-            if (gd.sceneName != otherCollider.gameObject.scene.name) { return false; }
-            if (((cldX - 1) > tmpX) || ((cldX + 1) < tmpX)) { return false; }
-            if (((cldY - 1) > tmpY) || ((cldY + 1) < tmpY)) { return false; }
-            if (gd.gameObj != otherCollider.gameObject.name.ToString()) { return false; }
-            if (GrassRandoV2Mod.sd.brokenGrass.Contains(gd.getTermName())) { return false; }
+            //makes sure the grass being hit is in the correct scene
+            if (gd.sceneName != otherCollider.gameObject.scene.name) { Modding.Logger.Log("Bad Scene name: " + otherCollider.name + ", " + otherCollider.gameObject.scene.name);  return false; }
+            //makes sure the grass being hit is in approximately the correct x & y locations 
+            if (((cldX - 1.5) > tmpX) || ((cldX + 1.5) < tmpX)) { Modding.Logger.Log("Bad X Loc: " + otherCollider.name + ", " + otherCollider.gameObject.scene.name); return false; }
+            if (((cldY - 1) > tmpY) || ((cldY + 1) < tmpY)) { Modding.Logger.Log("Bad Y Loc: " + otherCollider.name + ", " + otherCollider.gameObject.scene.name); return false; }
+            //makes sure the game object names are the same for the grasses
+            if (gd.gameObj != otherCollider.gameObject.name.ToString()) { Modding.Logger.Log("Bad gameObj name: " + otherCollider.name + ", " + otherCollider.gameObject.scene.name); return false; }
+            
+            //makes sure the grass being broken is not in the broken list
 
-            if(!otherCollider.name.Contains("grass")) { return false; }
+            //it turns out, for some reason checking the object against the broken grass list
+            // sometimes causes the grass to never mark as broken
+            //if (GrassRandoV2Mod.sd.brokenGrass.Contains(gd.getTermName())) { Modding.Logger.Log("Already in List: " + otherCollider.name + ", " + otherCollider.gameObject.scene.name); return false; }
 
+            //otherwise it should* be the correct grass
             return true;
         }
 
         //checks each hit instance to make sure it is a grass and in the correct location
         private void hitInst(Collider2D otherCollider, GameObject slash)
         {
-            int cldX = (int)Math.Round(otherCollider.bounds.center.x);
-            int cldY = (int)Math.Round(otherCollider.bounds.center.y);
+            try{
+                if (isMe(otherCollider) && !Placement.AllObtained())
+                {
+                    //logger to make sure only new grass was being seen
+                    //Modding.Logger.Log("Broke a new grass!" + otherCollider.name.ToString() + " " + otherCollider.gameObject.scene.name.ToString());
 
-            int tmpX = (int)Math.Round(gd.locations[0].x);
-            int tmpY = (int)Math.Round(gd.locations[0].y);
+                    //logs the grass in a usable form for debugging
+                    Modding.Logger.Log(otherCollider.gameObject.name.ToString() + ", " + gd.usrName);
 
-            if (isMe(otherCollider) && !Placement.AllObtained())
+                    //attempts to give the player the item
+                    Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = MessageType.None });
+
+                }
+            }
+            catch (Exception e)
             {
-                //logger to make sure only new grass was being seen
-                //Modding.Logger.Log("Broke a new grass!" + otherCollider.name.ToString() + " " + otherCollider.gameObject.scene.name.ToString());
-
-                Modding.Logger.Log(otherCollider.gameObject.name.ToString() + ", " + gd.usrName);
-
-                //var item = Finder.GetItem(gd.getItemName());
-                Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = MessageType.None });
-
+                Modding.Logger.LogError("Error in hitInst: " + e.ToString());
             }
         }
 

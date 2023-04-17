@@ -8,6 +8,8 @@ NOTE: This randomizer mod is a work in progress, it is currently not completable
 
 NOTE 2: This randomizer mod is a work in progress, some of the grass randomly will not drop the item it is holding. Ever.
 
+I would also like to thanks the developers of the Grass% mod (GrassyKnight) as their grass list did help reduce the amount of time spent locating all of the grass within the game
+
 # Required Mods
 RandomizerCore
 
@@ -25,3 +27,4 @@ ManuChanger
 * fix the grass not giving items bug
 * complete the logic for the rando
 * add a grass shop for all the grass you've collected
+

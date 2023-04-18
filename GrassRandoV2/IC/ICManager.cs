@@ -81,12 +81,14 @@ namespace GrassRandoV2.IC
                 if((sceneName == "Tutorial_01" || sceneName == "Town" || sceneName == "Room_Town_Stag_Station") && !GrassRandoV2Mod.settings.kingsPassAndDM) { return false; }
                 if((sceneName.Contains("Crossroads_")) && !GrassRandoV2Mod.settings.crossroads) { return false; }
                 if((sceneName.Contains("Deepnest_East")) && !GrassRandoV2Mod.settings.edge) { return false; }
-                if((sceneName.Contains("RestingGrounds") && !sceneName.Contains("RestingGrounds_04")) && !GrassRandoV2Mod.settings.resting) { return false; }
+                //if((sceneName.Contains("RestingGrounds") && !sceneName.Contains("RestingGrounds_04")) && !GrassRandoV2Mod.settings.resting) { return false; }
                 if((sceneName.Contains("Fungus2")) && !GrassRandoV2Mod.settings.fungal) { return false; }
                 if((sceneName.Contains("Fungus3")) && !GrassRandoV2Mod.settings.fogCan) { return false; }
                 if((sceneName.Contains("Fungus1")) && !GrassRandoV2Mod.settings.greenpath) { return false; }
                 if((sceneName.Contains("Deepnest") && !sceneName.Contains("Deepnest_East")) && !GrassRandoV2Mod.settings.deepNest) { return false; }
-                if((sceneName.Contains("Deepnest") && !sceneName.Contains("Abyss")) && !GrassRandoV2Mod.settings.abyssAndBasin) { return false; }
+                //if((sceneName.Contains("Deepnest") && !sceneName.Contains("Abyss")) && !GrassRandoV2Mod.settings.abyssAndBasin) { return false; }
+                if (sceneName.Contains("Abyss") && !GrassRandoV2Mod.settings.abyssAndBasin) { return false; }
+                if((sceneName.Equals("Fungus1_23"))) { return false; }
 
 
 

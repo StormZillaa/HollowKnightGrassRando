@@ -28,7 +28,7 @@ namespace GrassRandoV2.Rando
         public bool fogCan = false;
         public bool gardens = false;
         public bool fungal = false;
-        public bool resting = false;
+        //public bool resting = false;
         public bool edge = false;
         public bool deepNest = false;
         public bool abyssAndBasin = false;
@@ -37,7 +37,7 @@ namespace GrassRandoV2.Rando
 
         [Newtonsoft.Json.JsonIgnore]
         public bool anygrass => randomizeGrass || randomizeQuantumGrass || kingsPassAndDM || crossroads || greenpath
-            || fogCan || gardens || fungal || resting || resting || edge || deepNest || abyssAndBasin;
+            || fogCan || gardens || fungal || edge || deepNest || abyssAndBasin;
     }
 
     public class RandoMenuPage
@@ -99,7 +99,7 @@ namespace GrassRandoV2.Rando
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.fogCan)].SetValue(true);
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.gardens)].SetValue(true);
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.fungal)].SetValue(true);
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.resting)].SetValue(true);
+                //grassMEF.ElementLookup[nameof(GrassRandoSettings.resting)].SetValue(true);
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.edge)].SetValue(true);
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.deepNest)].SetValue(true);
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.abyssAndBasin)].SetValue(true);

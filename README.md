@@ -26,7 +26,7 @@ MapChanger
 ManuChanger
 
 # TODO
-* fix the grass not giving items bug
 * complete the logic for the rando
 * add a grass shop for all the grass you've collected
-
+* see if the lag from breaking grass can be reduced
+* on a related note: see if the hit instance from hitting broken grass can be prevented

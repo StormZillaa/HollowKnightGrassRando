@@ -42,6 +42,11 @@
     <WriteLinesToFile File="$(ExportDir)/VERSION.txt" Lines="@(VersionNumber)" Overwrite="true" Encoding="UTF-8" />
   </Target>
   <ItemGroup>
+    <Compile Remove="Resources\Sprites\**" />
+    <EmbeddedResource Remove="Resources\Sprites\**" />
+    <None Remove="Resources\Sprites\**" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Remove="Properties\Resources.resx" />
   </ItemGroup>
   <ItemGroup>
@@ -376,8 +381,5 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Sprites\" />
   </ItemGroup>
 </Project>

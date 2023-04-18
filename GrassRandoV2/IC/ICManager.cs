@@ -88,7 +88,8 @@ namespace GrassRandoV2.IC
                 if((sceneName.Contains("Deepnest") && !sceneName.Contains("Deepnest_East")) && !GrassRandoV2Mod.settings.deepNest) { return false; }
                 //if((sceneName.Contains("Deepnest") && !sceneName.Contains("Abyss")) && !GrassRandoV2Mod.settings.abyssAndBasin) { return false; }
                 if (sceneName.Contains("Abyss") && !GrassRandoV2Mod.settings.abyssAndBasin) { return false; }
-                if((sceneName.Equals("Fungus1_23"))) { return false; }
+                if (sceneName.Contains("White_Palace") && !GrassRandoV2Mod.settings.whitePalace) { return false; }
+                //if((sceneName.Equals("Fungus1_23"))) { return false; }
 
 
 

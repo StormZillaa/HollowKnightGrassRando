@@ -55,8 +55,18 @@ namespace GrassRandoV2.IC
                         //logs the grass that was broken in a usable format for debugging
                         Modding.Logger.Log(collision.gameObject.name.ToString() + ", " + gd.usrName);
 
+                        MessageType mt;
+
+                        if (GrassRandoV2Mod.settings.displayPickups)
+                        {
+                            mt = MessageType.Corner;
+                        }
+                        else
+                        {
+                            mt = MessageType.None;
+                        }
                         //attempts to give the player the item
-                        Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = MessageType.None });
+                        Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = mt });
 
                     }
                 }
@@ -114,9 +124,18 @@ namespace GrassRandoV2.IC
                     //logs the grass in a usable form for debugging
                     Modding.Logger.Log(otherCollider.gameObject.name.ToString() + ", " + gd.usrName);
 
-                    //attempts to give the player the item
-                    Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = MessageType.None });
+                    MessageType mt;
 
+                    if (GrassRandoV2Mod.settings.displayPickups)
+                    {
+                        mt = MessageType.Corner;
+                    }
+                    else
+                    {
+                        mt = MessageType.None;
+                    }
+                    //attempts to give the player the item
+                    Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = mt });
                 }
             }
             catch (Exception e)

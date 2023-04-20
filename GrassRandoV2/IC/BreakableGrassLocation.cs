@@ -94,7 +94,7 @@ namespace GrassRandoV2.IC
                         //i didnt like have 'grass' 24/7 in the bottom left
                         MessageType mt;
 
-                        if (GrassRandoV2Mod.settings.displayPickups)
+                        if (GrassRandoV2Mod.settings.DisplayPickups)
                         {
                             mt = MessageType.Corner;
                         }

@@ -95,18 +95,18 @@ namespace GrassRandoV2.IC
                 if((fsmType == "FSM" || fsmType == "quantum grass") && !GrassRandoV2Mod.settings.randomizeQuantumGrass) { return false; }
                 if((sceneName.Contains("Dream")) && !GrassRandoV2Mod.settings.randomizeDreamNailGrass) { return false; }
 
-                if((sceneName == "Tutorial_01" || sceneName == "Town" || sceneName == "Room_Town_Stag_Station") && !GrassRandoV2Mod.settings.kingsPassAndDM) { return false; }
-                if((sceneName.Contains("Crossroads_")) && !GrassRandoV2Mod.settings.crossroads) { return false; }
-                if((sceneName.Contains("Deepnest_East")) && !GrassRandoV2Mod.settings.edge) { return false; }
+                if((sceneName == "Tutorial_01" || sceneName == "Town" || sceneName == "Room_Town_Stag_Station") && !GrassRandoV2Mod.settings.KingsPassAndDirtmouth) { return false; }
+                if((sceneName.Contains("Crossroads_")) && !GrassRandoV2Mod.settings.ForgottenCrossroads) { return false; }
+                if((sceneName.Contains("Deepnest_East")) && !GrassRandoV2Mod.settings.KingdomsEdge) { return false; }
                 //if((sceneName.Contains("RestingGrounds") && !sceneName.Contains("RestingGrounds_04")) && !GrassRandoV2Mod.settings.resting) { return false; }
                 //if((sceneName.Contains("Fungus2")) && !GrassRandoV2Mod.settings.fungal && !isQueens(sceneName)) { return false; }
-                if((sceneName.Contains("Fungus3") || sceneName.Contains("Fungus2")) && !GrassRandoV2Mod.settings.fogCan && !isQueens(sceneName)) { return false; }
-                if((sceneName.Contains("Fungus1")) && !GrassRandoV2Mod.settings.greenpath && !isQueens(sceneName)) { return false; }
+                if((sceneName.Contains("Fungus3") || sceneName.Contains("Fungus2")) && !GrassRandoV2Mod.settings.FogCanyon && !isQueens(sceneName)) { return false; }
+                if((sceneName.Contains("Fungus1")) && !GrassRandoV2Mod.settings.Greenpath && !isQueens(sceneName)) { return false; }
                 //if((sceneName.Contains("Deepnest") && !sceneName.Contains("Deepnest_East") && !isQueens(sceneName)) && !GrassRandoV2Mod.settings.deepNest) { return false; }
                 //if((sceneName.Contains("Deepnest") && !sceneName.Contains("Abyss")) && !GrassRandoV2Mod.settings.abyssAndBasin) { return false; }
-                if (sceneName.Contains("Abyss") && !GrassRandoV2Mod.settings.abyssAndBasin) { return false; }
-                if (sceneName.Contains("White_Palace") && !GrassRandoV2Mod.settings.whitePalace) { return false; }
-                if(isQueens(sceneName) && !GrassRandoV2Mod.settings.gardens) { return false; }
+                if (sceneName.Contains("Abyss") && !GrassRandoV2Mod.settings.AbyssAndAncientBasin) { return false; }
+                if (sceneName.Contains("White_Palace") && !GrassRandoV2Mod.settings.WhitePalace) { return false; }
+                if(isQueens(sceneName) && !GrassRandoV2Mod.settings.QueensGardens) { return false; }
                 //if((sceneName.Equals("Fungus1_23"))) { return false; }
 
 

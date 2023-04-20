@@ -22,24 +22,24 @@ namespace GrassRandoV2.Rando
         public bool randomizeDreamNailGrass = false;
         public bool addShop = false;
 
-        public bool kingsPassAndDM = false;
-        public bool crossroads = false;
-        public bool greenpath = false;
-        public bool fogCan = false;
-        public bool gardens = false;
+        public bool KingsPassAndDirtmouth = false;
+        public bool ForgottenCrossroads = false;
+        public bool Greenpath = false;
+        public bool FogCanyon = false;
+        public bool QueensGardens = false;
         //public bool fungal = false;
         //public bool resting = false;
-        public bool edge = false;
+        public bool KingdomsEdge = false;
         //public bool deepNest = false;
-        public bool abyssAndBasin = false;
-        public bool whitePalace = false;
-        public bool displayPickups = true;
+        public bool AbyssAndAncientBasin = false;
+        public bool WhitePalace = false;
+        public bool DisplayPickups = true;
 
         //GrassLocationSettings gls = new();
 
         [Newtonsoft.Json.JsonIgnore]
-        public bool anygrass => randomizeGrass || randomizeQuantumGrass || kingsPassAndDM || crossroads || greenpath
-            || fogCan || gardens || edge || abyssAndBasin || whitePalace;
+        public bool anygrass => randomizeGrass || randomizeQuantumGrass || KingsPassAndDirtmouth || ForgottenCrossroads || Greenpath
+            || FogCanyon || QueensGardens || KingdomsEdge || AbyssAndAncientBasin || WhitePalace;
     }
 
     public class RandoMenuPage
@@ -95,17 +95,17 @@ namespace GrassRandoV2.Rando
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.randomizeDreamNailGrass)].SetValue(false);
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.addShop)].SetValue(false);
 
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.kingsPassAndDM)].SetValue(true);
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.crossroads)].SetValue(true);
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.greenpath)].SetValue(true);
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.fogCan)].SetValue(true);
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.gardens)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.KingsPassAndDirtmouth)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.ForgottenCrossroads)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.Greenpath)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.FogCanyon)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.QueensGardens)].SetValue(true);
                 //grassMEF.ElementLookup[nameof(GrassRandoSettings.fungal)].SetValue(true);
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.whitePalace)].SetValue(true);
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.edge)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.WhitePalace)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.KingdomsEdge)].SetValue(true);
                 //grassMEF.ElementLookup[nameof(GrassRandoSettings.deepNest)].SetValue(true);
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.abyssAndBasin)].SetValue(true);
-                grassMEF.ElementLookup[nameof(GrassRandoSettings.displayPickups)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.AbyssAndAncientBasin)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.DisplayPickups)].SetValue(true);
 
                 return;
             }

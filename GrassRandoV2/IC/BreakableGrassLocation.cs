@@ -22,61 +22,20 @@ namespace GrassRandoV2.IC
         public grassdata gd;
         public Fsm fsm;
 
+        public bool isObt;
+
         //private bool isGrass;
 
         public void Init()
         {
-            //this is the hook i assumed would work
-            //however, it appears it misses some grass
+            //this is the hook i use for checking what is being hit
             ModHooks.SlashHitHook += hitInst;
 
-            //my attempt at adding redundancy to the cutting trigger of the grass
-            //On.GrassCut.ShouldCut += cutInst; //note: this did not change much :/
-
+            isObt = false;
 
             //logger to make sure all of the grass is actually loaded for debugging purposes
             //believe or not, this is *very* slow
             //Modding.Logger.Log("Loaded a grass: " + gd.getTermName());
-        }
-
-        private bool cutInst(On.GrassCut.orig_ShouldCut orig, Collider2D collision)
-        {
-            bool isCut = orig(collision);
-
-            try
-            {
-                if (isCut)
-                {
-                    if (isMe(collision) && !Placement.AllObtained())
-                    {
-                        //logger to make sure only new grass was being seen
-                        //Modding.Logger.Log("Broke a new grass!" + otherCollider.name.ToString() + " " + otherCollider.gameObject.scene.name.ToString());
-
-                        //logs the grass that was broken in a usable format for debugging
-                        Modding.Logger.Log(collision.gameObject.name.ToString() + ", " + gd.usrName);
-
-                        MessageType mt;
-
-                        if (GrassRandoV2Mod.settings.displayPickups)
-                        {
-                            mt = MessageType.Corner;
-                        }
-                        else
-                        {
-                            mt = MessageType.None;
-                        }
-                        //attempts to give the player the item
-                        Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = mt });
-
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Modding.Logger.LogError("Error in cutInst: " + e.ToString());
-            }
-
-            return isCut;
         }
 
         private bool isMe(Collider2D otherCollider)
@@ -85,6 +44,10 @@ namespace GrassRandoV2.IC
 
             //makes sure the game object is actually grass
             if (!otherCollider.name.ToLower().Contains("grass")) { return false; }
+            //makes sure the grass being hit is in the correct scene
+            if (gd.sceneName != otherCollider.gameObject.scene.name) { return false; }
+            //makes sure the game object names are the same for the grasses
+            if (gd.gameObj != otherCollider.gameObject.name.ToString()) { return false; }
 
             //gets the rough locations of the current grass
             int cldX = (int)Math.Round(otherCollider.bounds.center.x);
@@ -94,13 +57,10 @@ namespace GrassRandoV2.IC
             int tmpX = (int)Math.Round(gd.locations[0].x);
             int tmpY = (int)Math.Round(gd.locations[0].y);
 
-            //makes sure the grass being hit is in the correct scene
-            if (gd.sceneName != otherCollider.gameObject.scene.name) { Modding.Logger.Log("Bad Scene name: " + otherCollider.name + ", " + otherCollider.gameObject.scene.name);  return false; }
             //makes sure the grass being hit is in approximately the correct x & y locations 
-            if (((cldX - 1.5) > tmpX) || ((cldX + 1.5) < tmpX)) { Modding.Logger.Log("Bad X Loc: " + otherCollider.name + ", " + otherCollider.gameObject.scene.name); return false; }
-            if (((cldY - 1) > tmpY) || ((cldY + 1) < tmpY)) { Modding.Logger.Log("Bad Y Loc: " + otherCollider.name + ", " + otherCollider.gameObject.scene.name); return false; }
-            //makes sure the game object names are the same for the grasses
-            if (gd.gameObj != otherCollider.gameObject.name.ToString()) { Modding.Logger.Log("Bad gameObj name: " + otherCollider.name + ", " + otherCollider.gameObject.scene.name); return false; }
+            if (((cldX - 1.5) > tmpX) || ((cldX + 1.5) < tmpX)) { return false; }
+            if (((cldY - 1) > tmpY) || ((cldY + 1) < tmpY)) { return false; }
+            
             
             //makes sure the grass being broken is not in the broken list
 
@@ -115,32 +75,45 @@ namespace GrassRandoV2.IC
         //checks each hit instance to make sure it is a grass and in the correct location
         private void hitInst(Collider2D otherCollider, GameObject slash)
         {
-            try{
-                if (isMe(otherCollider) && !Placement.AllObtained())
-                {
-                    //logger to make sure only new grass was being seen
-                    //Modding.Logger.Log("Broke a new grass!" + otherCollider.name.ToString() + " " + otherCollider.gameObject.scene.name.ToString());
-
-                    //logs the grass in a usable form for debugging
-                    Modding.Logger.Log(otherCollider.gameObject.name.ToString() + ", " + gd.usrName);
-
-                    MessageType mt;
-
-                    if (GrassRandoV2Mod.settings.displayPickups)
-                    {
-                        mt = MessageType.Corner;
-                    }
-                    else
-                    {
-                        mt = MessageType.None;
-                    }
-                    //attempts to give the player the item
-                    Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = mt });
-                }
-            }
-            catch (Exception e)
+            if (!isObt)
             {
-                Modding.Logger.LogError("Error in hitInst: " + e.ToString());
+                try
+                {
+                    if (isMe(otherCollider) && !Placement.AllObtained())
+                    {
+                        //logger to make sure only new grass was being seen
+                        //Modding.Logger.Log("Broke a new grass!" + otherCollider.name.ToString() + " " + otherCollider.gameObject.scene.name.ToString());
+
+                        //logs the grass in a usable form for debugging
+                        Modding.Logger.Log(otherCollider.gameObject.name.ToString() + ", " + gd.usrName);
+
+                        //this holds the message type that gets assigned for the
+                        //item the grass drops upon breaking
+
+                        //this is toggled in setup settings, and its here because
+                        //i didnt like have 'grass' 24/7 in the bottom left
+                        MessageType mt;
+
+                        if (GrassRandoV2Mod.settings.displayPickups)
+                        {
+                            mt = MessageType.Corner;
+                        }
+                        else
+                        {
+                            mt = MessageType.None;
+                        }
+
+                        //attempts to give the player the item
+                        Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = mt });
+
+                        //sets the obtained bool to true
+                        isObt = true;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Modding.Logger.LogError("Error in hitInst: " + e.ToString());
+                }
             }
         }
 

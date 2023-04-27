@@ -1,0 +1,43 @@
+﻿Complete Zones:
+Kings Pass
+Dirtmouth
+Abyss
+Fog Canyon
+Crossroads
+
+needs checking:
+edge
+
+Deepnest_43
+
+wip:
+dream grass
+quantum grass?? -> unsure if this is actually in the mod atm
+greenpath -> started this zone
+gardens
+whitepalace
+
+- look at massive moss charger grass
+
+- locate/remove room_fungus_shaman grass
+
+
+crossroads 18:
+- check to make sure correct exit was changed
+white_grass#
+//w_gr15 //
+//w_gr14 //
+//w_gr13 //
+//w_gr11 //
+//w_gr22 //
+//w_gr24 //
+
+fungus1_06 -> requires left/right slash or one of the arts
+
+update logic list:
+
+Fungus1_07 -> check what id no for bot right corner grass
+(Fungus1_07[top1] | Fungus1_07[left1] | Fungus1_07[right1]) + (WINGS | RIGHTDASH | SIDESLASH | ANYDASHSLASH | GREATSLASH)
+s_gr
+gr_gr_2
+

@@ -61,7 +61,7 @@ namespace GrassRandoV2.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GrassRandoV2\Resources\GrassLogtest.json.
+        ///   Looks up a localized string similar to GrassRandoV2\Resources\GrassTestLog.json.
         /// </summary>
         public static string DestGrassData {
             get {

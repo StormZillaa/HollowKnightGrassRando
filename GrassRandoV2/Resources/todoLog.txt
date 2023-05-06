@@ -37,10 +37,6 @@ fungus1_06 -> requires left/right slash or one of the arts
 update logic list:
 
 Fungus1_14 needs to be done
-Fungus1_13 as well
 
 //Fungus1_07 -> check what id no for bot right corner grass
 //(Fungus1_07[top1] | Fungus1_07[left1] | Fungus1_07[right1]) + (WINGS | RIGHTDASH | SIDESLASH | ANYDASHSLASH | GREATSLASH)
-//s_gr
-//gr_gr_2
-

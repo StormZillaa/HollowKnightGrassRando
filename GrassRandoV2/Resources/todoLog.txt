@@ -4,16 +4,17 @@ Dirtmouth
 Abyss
 Fog Canyon
 Crossroads
+greenpath
 
 needs checking:
 edge
+Crossroads_14
 
-Deepnest_43
+Deepnest_43 -> has logic, needs double check
 
 wip:
 dream grass
 quantum grass?? -> unsure if this is actually in the mod atm
-greenpath -> started this zone
 gardens
 whitepalace
 
@@ -24,19 +25,6 @@ whitepalace
 
 crossroads 18:
 - check to make sure correct exit was changed
-white_grass#
-//w_gr15 //
-//w_gr14 //
-//w_gr13 //
-//w_gr11 //
-//w_gr22 //
-//w_gr24 //
-
-fungus1_06 -> requires left/right slash or one of the arts
 
 update logic list:
 
-Fungus1_14 needs to be done
-
-//Fungus1_07 -> check what id no for bot right corner grass
-//(Fungus1_07[top1] | Fungus1_07[left1] | Fungus1_07[right1]) + (WINGS | RIGHTDASH | SIDESLASH | ANYDASHSLASH | GREATSLASH)

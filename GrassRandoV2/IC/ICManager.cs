@@ -109,6 +109,8 @@ namespace GrassRandoV2.IC
                 if(isQueens(sceneName) && !GrassRandoV2Mod.settings.QueensGardens) { return false; }
                 //if((sceneName.Equals("Fungus1_23"))) { return false; }
 
+                //temp code to make the logic writing easier
+                //if (!logic.Contains("Tutorial_01")) { return false; }
 
 
                 return true;

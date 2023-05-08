@@ -6,19 +6,20 @@ Fog Canyon
 Crossroads
 greenpath
 gardens
+whitepalace
 
 needs checking:
-edge
+
 Crossroads_14
 
 Deepnest_43 -> has logic, needs double check
 
 wip:
+edge
 dream grass
+godHome
 quantum grass?? -> unsure if this is actually in the mod atm
-whitepalace
 
-- look at massive moss charger grass
 
 - locate/remove room_fungus_shaman grass
 
@@ -27,5 +28,3 @@ crossroads 18:
 - check to make sure correct exit was changed
 
 update logic list:
-
-

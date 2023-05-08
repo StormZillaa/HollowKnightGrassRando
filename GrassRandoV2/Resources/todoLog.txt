@@ -5,6 +5,7 @@ Abyss
 Fog Canyon
 Crossroads
 greenpath
+gardens
 
 needs checking:
 edge
@@ -15,7 +16,6 @@ Deepnest_43 -> has logic, needs double check
 wip:
 dream grass
 quantum grass?? -> unsure if this is actually in the mod atm
-gardens
 whitepalace
 
 - look at massive moss charger grass
@@ -27,4 +27,5 @@ crossroads 18:
 - check to make sure correct exit was changed
 
 update logic list:
+
 

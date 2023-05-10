@@ -15,7 +15,7 @@ Crossroads_14
 Deepnest_43 -> has logic, needs double check
 
 wip:
-edge
+edge - check rooms 3/4
 dream grass
 godHome
 quantum grass?? -> unsure if this is actually in the mod atm
@@ -28,3 +28,4 @@ crossroads 18:
 - check to make sure correct exit was changed
 
 update logic list:
+

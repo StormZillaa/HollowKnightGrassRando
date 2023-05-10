@@ -33,13 +33,15 @@ namespace GrassRandoV2.Rando
         //public bool deepNest = false;
         public bool AbyssAndAncientBasin = false;
         public bool WhitePalace = false;
+        public bool GodHome = false;
         public bool DisplayPickups = true;
+        
 
         //GrassLocationSettings gls = new();
 
         [Newtonsoft.Json.JsonIgnore]
         public bool anygrass => randomizeGrass || randomizeQuantumGrass || KingsPassAndDirtmouth || ForgottenCrossroads || Greenpath
-            || FogCanyon || QueensGardens || KingdomsEdge || AbyssAndAncientBasin || WhitePalace;
+            || FogCanyon || QueensGardens || KingdomsEdge || AbyssAndAncientBasin || WhitePalace || GodHome;
     }
 
     public class RandoMenuPage
@@ -105,6 +107,7 @@ namespace GrassRandoV2.Rando
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.KingdomsEdge)].SetValue(true);
                 //grassMEF.ElementLookup[nameof(GrassRandoSettings.deepNest)].SetValue(true);
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.AbyssAndAncientBasin)].SetValue(true);
+                grassMEF.ElementLookup[nameof(GrassRandoSettings.GodHome)].SetValue(true);
                 grassMEF.ElementLookup[nameof(GrassRandoSettings.DisplayPickups)].SetValue(true);
 
                 return;

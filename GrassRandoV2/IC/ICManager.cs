@@ -107,6 +107,7 @@ namespace GrassRandoV2.IC
                 if (sceneName.Contains("Abyss") && !GrassRandoV2Mod.settings.AbyssAndAncientBasin) { return false; }
                 if (sceneName.Contains("White_Palace") && !GrassRandoV2Mod.settings.WhitePalace) { return false; }
                 if(isQueens(sceneName) && !GrassRandoV2Mod.settings.QueensGardens) { return false; }
+                if(sceneName.Contains("GG") && !GrassRandoV2Mod.settings.GodHome) { return false; }
                 //if((sceneName.Equals("Fungus1_23"))) { return false; }
 
                 //temp code to make the logic writing easier

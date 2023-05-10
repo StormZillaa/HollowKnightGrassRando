@@ -26,5 +26,6 @@ MapChanger
 ManuChanger
 
 # TODO
-* complete the logic for the rando
+* check certain zones of the logic for the rando
 * add a grass shop for all the grass you've collected
+* see if c-dash breaking the grass can be added for the checks

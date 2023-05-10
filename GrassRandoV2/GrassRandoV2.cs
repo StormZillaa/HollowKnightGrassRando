@@ -26,7 +26,7 @@ namespace GrassRandoV2
 
         //sets up the ui mod stuff for the mod manager
         new public string GetName() => "Grass Randomizer";
-        public override string GetVersion() => "v0.2";
+        public override string GetVersion() => "v1.0";
 
         private static GrassRandoV2Mod? _instance;
 

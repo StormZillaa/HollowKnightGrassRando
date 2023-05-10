@@ -7,25 +7,19 @@ Crossroads
 greenpath
 gardens
 whitepalace
+dream grass
+godHome
 
 needs checking:
 
-Crossroads_14
-
-Deepnest_43 -> has logic, needs double check
-
 wip:
-edge - check rooms 3/4
-dream grass
-godHome
 quantum grass?? -> unsure if this is actually in the mod atm
 
 
-- locate/remove room_fungus_shaman grass
-
-
-crossroads 18:
-- check to make sure correct exit was changed
+TODO:
+- implement grass shop
+- see if c-dash breaking the grass can be added for the checks
+- maybe figure out quantum grass
 
 update logic list:
 

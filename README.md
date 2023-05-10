@@ -10,7 +10,7 @@ NOTE 2: This rando does not currently have a way of dealing with the quantum gra
 
 NOTE 3: If the dream grass is enabled, make sure you get all of it in both the dream boss fights and the dream nail collection scene. I DID NOT IMPLEMENT A FAILSAFE FOR THIS.
 
-NOTE 4: You currently have to break all of the grass with your nail to get the drops. I am looking for a way to fix this without taking the frames.
+NOTE 4: You currently have to break all of the grass with your nail to get the drops. I am looking for a way to fix this without tanking the frames.
 
 I would also like to thanks the developers of the Grass% mod (GrassyKnight) as their grass list did help reduce the amount of time spent locating all of the grass within the game
 

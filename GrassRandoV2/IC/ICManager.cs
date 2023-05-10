@@ -100,7 +100,7 @@ namespace GrassRandoV2.IC
                 if((sceneName.Contains("Deepnest_East")) && !GrassRandoV2Mod.settings.KingdomsEdge) { return false; }
                 //if((sceneName.Contains("RestingGrounds") && !sceneName.Contains("RestingGrounds_04")) && !GrassRandoV2Mod.settings.resting) { return false; }
                 //if((sceneName.Contains("Fungus2")) && !GrassRandoV2Mod.settings.fungal && !isQueens(sceneName)) { return false; }
-                if((sceneName.Contains("Fungus3") || sceneName.Contains("Fungus2")) && !GrassRandoV2Mod.settings.FogCanyon && !isQueens(sceneName)) { return false; }
+                if((sceneName.Contains("Fungus3") || sceneName.Contains("Fungus2") || sceneName.Contains("Room_Fungus_Shaman")) && !GrassRandoV2Mod.settings.FogCanyon && !isQueens(sceneName)) { return false; }
                 if((sceneName.Contains("Fungus1")) && !GrassRandoV2Mod.settings.Greenpath && !isQueens(sceneName)) { return false; }
                 //if((sceneName.Contains("Deepnest") && !sceneName.Contains("Deepnest_East") && !isQueens(sceneName)) && !GrassRandoV2Mod.settings.deepNest) { return false; }
                 //if((sceneName.Contains("Deepnest") && !sceneName.Contains("Abyss")) && !GrassRandoV2Mod.settings.abyssAndBasin) { return false; }

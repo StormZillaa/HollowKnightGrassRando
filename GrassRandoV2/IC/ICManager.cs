@@ -10,24 +10,35 @@ using RandomizerMod.Settings;
 using RandomizerCore;
 using System.Text.RegularExpressions;
 using ItemChanger.UIDefs;
-using RandomizerMod.Menu;
-using Modding;
 using RandomizerMod.Logging;
-using UnityEngine;
 using System.IO;
-using System.Runtime.InteropServices;
-using ItemChanger.Util;
-using System.Linq;
-using ItemChanger.Locations;
-using ItemChanger;
-using Satchel;
-using ItemChanger.Util;
-using RandomizerMod.IC;
-using System.Drawing.Drawing2D;
-using GrassRandoV2.Rando;
+using Newtonsoft.Json.Converters;
 
 namespace GrassRandoV2.IC
 {
+
+    public static class JsonUtil
+    {
+        public static readonly JsonSerializer _js;
+
+        public static T Deserialize<T>(string embeddedResourcePath)
+        {
+            using StreamReader reader = new StreamReader(typeof(JsonUtil).Assembly.GetManifestResourceStream(embeddedResourcePath));
+            using JsonTextReader reader2 = new JsonTextReader(reader);
+            return _js.Deserialize<T>(reader2);
+        }
+
+        static JsonUtil()
+        {
+            _js = new JsonSerializer
+            {
+                DefaultValueHandling = DefaultValueHandling.Include,
+                Formatting = Formatting.Indented,
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+            _js.Converters.Add(new StringEnumConverter());
+        }
+    }
     public class ICManager
     {
         #pragma warning disable 0649
@@ -75,7 +86,7 @@ namespace GrassRandoV2.IC
                 List<string> rooms = new List<string>{ "fungus3_40", "fungus3_44", "fungus3_21" , "fungus3_22", "fungus3_23", "fungus3_10", "fungus3_04", "fungus3_05", "fungus3_08", "fungus3_24",
                 "fungus3_34", "fungus3_11", "fungus3_13", "fungus3_48", "fungus3_39", "fungus3_49", "fungus3_50", "deepnest_43", "fungus1_23", "fungus1_24", "deepnest_42"};
 
-                foreach(string str in rooms)
+                foreach (string str in rooms)
                 {
                     if (sceneName.ToLower() == str.ToLower())
                     {
@@ -92,22 +103,22 @@ namespace GrassRandoV2.IC
                 if (!GrassRandoV2Mod.settings.anygrass) { return false; }
 
                 if ((fsmType == "FSM" || fsmType == "default grass") && !GrassRandoV2Mod.settings.randomizeGrass) { return false; }
-                if((fsmType == "FSM" || fsmType == "quantum grass") && !GrassRandoV2Mod.settings.randomizeQuantumGrass) { return false; }
-                if((sceneName.Contains("Dream")) && !GrassRandoV2Mod.settings.randomizeDreamNailGrass) { return false; }
+                if ((fsmType == "FSM" || fsmType == "quantum grass") && !GrassRandoV2Mod.settings.randomizeQuantumGrass) { return false; }
+                if ((sceneName.Contains("Dream")) && !GrassRandoV2Mod.settings.randomizeDreamNailGrass) { return false; }
 
-                if((sceneName == "Tutorial_01" || sceneName == "Town" || sceneName == "Room_Town_Stag_Station") && !GrassRandoV2Mod.settings.KingsPassAndDirtmouth) { return false; }
-                if((sceneName.Contains("Crossroads_")) && !GrassRandoV2Mod.settings.ForgottenCrossroads) { return false; }
-                if((sceneName.Contains("Deepnest_East")) && !GrassRandoV2Mod.settings.KingdomsEdge) { return false; }
+                if ((sceneName == "Tutorial_01" || sceneName == "Town" || sceneName == "Room_Town_Stag_Station") && !GrassRandoV2Mod.settings.KingsPassAndDirtmouth) { return false; }
+                if ((sceneName.Contains("Crossroads_")) && !GrassRandoV2Mod.settings.ForgottenCrossroads) { return false; }
+                if ((sceneName.Contains("Deepnest_East")) && !GrassRandoV2Mod.settings.KingdomsEdge) { return false; }
                 //if((sceneName.Contains("RestingGrounds") && !sceneName.Contains("RestingGrounds_04")) && !GrassRandoV2Mod.settings.resting) { return false; }
                 //if((sceneName.Contains("Fungus2")) && !GrassRandoV2Mod.settings.fungal && !isQueens(sceneName)) { return false; }
-                if((sceneName.Contains("Fungus3") || sceneName.Contains("Fungus2") || sceneName.Contains("Room_Fungus_Shaman")) && !GrassRandoV2Mod.settings.FogCanyon && !isQueens(sceneName)) { return false; }
-                if((sceneName.Contains("Fungus1")) && !GrassRandoV2Mod.settings.Greenpath && !isQueens(sceneName)) { return false; }
+                if ((sceneName.Contains("Fungus3") || sceneName.Contains("Fungus2") || sceneName.Contains("Room_Fungus_Shaman")) && !GrassRandoV2Mod.settings.FogCanyon && !isQueens(sceneName)) { return false; }
+                if ((sceneName.Contains("Fungus1")) && !GrassRandoV2Mod.settings.Greenpath && !isQueens(sceneName)) { return false; }
                 //if((sceneName.Contains("Deepnest") && !sceneName.Contains("Deepnest_East") && !isQueens(sceneName)) && !GrassRandoV2Mod.settings.deepNest) { return false; }
                 //if((sceneName.Contains("Deepnest") && !sceneName.Contains("Abyss")) && !GrassRandoV2Mod.settings.abyssAndBasin) { return false; }
                 if (sceneName.Contains("Abyss") && !GrassRandoV2Mod.settings.AbyssAndAncientBasin) { return false; }
                 if (sceneName.Contains("White_Palace") && !GrassRandoV2Mod.settings.WhitePalace) { return false; }
-                if(isQueens(sceneName) && !GrassRandoV2Mod.settings.QueensGardens) { return false; }
-                if(sceneName.Contains("GG") && !GrassRandoV2Mod.settings.GodHome) { return false; }
+                if (isQueens(sceneName) && !GrassRandoV2Mod.settings.QueensGardens) { return false; }
+                if (sceneName.Contains("GG") && !GrassRandoV2Mod.settings.GodHome) { return false; }
                 //if((sceneName.Equals("Fungus1_23"))) { return false; }
 
                 //temp code to make the logic writing easier
@@ -115,7 +126,7 @@ namespace GrassRandoV2.IC
 
 
                 return true;
-            } 
+            }
 
             public void initInternalName()
             {
@@ -147,8 +158,9 @@ namespace GrassRandoV2.IC
 
         private static Dictionary<string, ItemGroupBuilder> definedGroups = new();
 
+        //public readonly static List<grassdata> gd = JsonConvert.DeserializeObject<List<grassdata>>(File.ReadAllText(Properties.Resource1.DestGrassData).ToString());
 
-        public readonly static List<grassdata> gd = JsonConvert.DeserializeObject<List<grassdata>>(File.ReadAllText(Properties.Resource1.DestGrassData).ToString());
+        public readonly static List<grassdata> gd = JsonUtil.Deserialize<List<grassdata>>("GrassRandoV2.Resources.GrassLog.json");
 
         public static List<BreakableGrassLocation> bgl = new();
 

@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <data name="DestGrassData" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grass_data.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-</root>

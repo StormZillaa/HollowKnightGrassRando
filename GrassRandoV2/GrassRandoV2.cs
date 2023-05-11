@@ -5,8 +5,7 @@ using GrassRandoV2.IC;
 using GrassRandoV2.Rando;
 using RandoSettingsManager;
 using RandoSettingsManager.SettingsManagement;
-
-
+using System.Reflection;
 
 namespace GrassRandoV2
 {
@@ -52,6 +51,8 @@ namespace GrassRandoV2
         public override void Initialize()
         {
             Log("Prepping the Grando");
+
+           Assembly ass;
 
             //item config manager, makes things more organized
             ICManager manager = new();

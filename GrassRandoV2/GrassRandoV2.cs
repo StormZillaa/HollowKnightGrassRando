@@ -65,6 +65,11 @@ namespace GrassRandoV2
                 HookRSM();
             }
 
+            if (ModHooks.GetMod("RandoMapMod") is Mod)
+            {
+
+            }
+
             //registers the items, locations, and then sets up the item hooks
             manager.RegisterItemsAndLocations();
             manager.Hook();
@@ -80,6 +85,12 @@ namespace GrassRandoV2
                 (st) => RandoMenuPage.Instance.PasteSettings(st),
                 () => settings.anygrass ? settings : null
             ));
+        }
+
+        //location where I will set up hooks for the rando map mod
+        private void HookRMM()
+        {
+            
         }
 
         public void OnLoadLocal(SaveData s)

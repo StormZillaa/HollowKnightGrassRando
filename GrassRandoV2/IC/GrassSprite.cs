@@ -16,7 +16,7 @@ namespace GrassRandoV2.IC
         }
 
         [Newtonsoft.Json.JsonIgnore]
-        public Sprite Value => ebsm.GetSprite("grassIcon.jpeg");
+        public Sprite Value => ebsm.GetSprite("grassIcon");
         public ISprite Clone() => (ISprite)MemberwiseClone();
     }
 }

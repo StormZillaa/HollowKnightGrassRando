@@ -214,7 +214,7 @@ namespace GrassRandoV2.IC
                     {
                         name = new BoxedString("Grass"),
                         shopDesc = new BoxedString("\n" + grassShopDesc[rand.Next(0, grassShopDesc.Length)]),
-                        sprite = new GrassSprite(grass.sprite)
+                        sprite = new GrassSprite()
                     },
                     tags = new()
                     {
@@ -227,8 +227,8 @@ namespace GrassRandoV2.IC
                 try
                 {
 
-                    Finder.DefineCustomLocation(GSL);
-                    Finder.DefineCustomItem(grassItem);
+                    ItemChanger.Finder.DefineCustomLocation(GSL);
+                    ItemChanger.Finder.DefineCustomItem(grassItem);
                 }
                 catch (Exception ex)
                 {

@@ -50,9 +50,11 @@
     <None Remove="build.yml" />
     <None Remove="dependabot.yml" />
     <None Remove="README.md" />
+    <None Remove="Resources\grassIcon.jpeg" />
     <None Remove="Resources\GrassLog.json" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\grassIcon.jpeg" />
     <EmbeddedResource Include="Resources\GrassLog.json" />
   </ItemGroup>
   <ItemGroup>

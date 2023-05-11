@@ -146,7 +146,17 @@ namespace GrassRandoV2.IC
                 "You already know what this is.",
                 "Gr-assssss!",
                 "Grawass ~_~",
-                "What's this green stuff?"
+                "What's this green stuff?",
+                "Someone has to keep the lawn clean.",
+                "I don't have a use for it.",
+                "This grass doesn't taste very good.",
+                "I recommend washing it before you eat it.",
+                "Smoking this grass is not recommended.",
+                "Not very nutritional.",
+                "Not enough to break your fall.",
+                "Not tall enough to hide in.",
+                "This one didn't have any geo in it.",
+                "This grass has a funky smell."
             };
 
         //groups for the two types of grass
@@ -273,7 +283,7 @@ namespace GrassRandoV2.IC
                         Name = grass.getItemName(),
                         Pool = grass.getGroupName(),
                         MajorItem = false,
-                        PriceCap = 200
+                        PriceCap = 50
                     };
                 });
 

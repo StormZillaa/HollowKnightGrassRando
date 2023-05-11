@@ -19,15 +19,13 @@ RandomizerCore
 
 Randomizer4
 
-RandoPlus
-
 ItemChanger
 
 MapChanger
 
-ManuChanger
+MenuChanger
 
 # TODO
 * add a grass shop for all the grass you've collected
 * see if c-dash breaking the grass can be added for the checks
-* add a sprite for the randoMapMod to look at
+* add an integration and correct config settings for the rando map mod

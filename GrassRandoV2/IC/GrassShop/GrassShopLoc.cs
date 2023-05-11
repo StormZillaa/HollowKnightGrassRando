@@ -1,5 +1,4 @@
-﻿using GrassRandoV2.IC.GrassShop.GrassShop;
-using ItemChanger;
+﻿using ItemChanger;
 using ItemChanger.Locations;
 using ItemChanger.Locations.SpecialLocations;
 using RandomizerMod.RC;

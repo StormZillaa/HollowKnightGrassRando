@@ -112,14 +112,8 @@
     <Reference Include="RandomizerMod">
       <HintPath>$(HollowKnightRefs)/Mods/Randomizer 4/RandomizerMod.dll</HintPath>
     </Reference>
-    <Reference Include="RandoPlus">
-      <HintPath>$(HollowKnightRefs)/Mods/RandoPlus/RandoPlus.dll</HintPath>
-    </Reference>
     <Reference Include="RandoSettingsManager">
       <HintPath>RandoSettingsManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Satchel">
-      <HintPath>$(HollowKnightRefs)/Mods/Satchel/Satchel.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition">
       <HintPath>$(HollowKnightRefs)/System.ComponentModel.Composition.dll</HintPath>

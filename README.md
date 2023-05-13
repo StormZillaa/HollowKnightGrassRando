@@ -33,3 +33,4 @@ MenuChanger
 * add a grass shop for all the grass you've collected
 * see if c-dash breaking the grass can be added for the checks
 * add an integration and correct config settings for the rando map mod
+* Find fix to get back into dream locations -> see note 3

@@ -185,6 +185,10 @@ namespace GrassRandoV2.IC
             if (PlayerData.instance.falseKnightDefeated && (GrassRandoV2Mod.sd.knightDreamGrassBroken < 23)) { 
                 PlayerData.instance.falseKnightDreamDefeated = !PlayerData.instance.falseKnightDreamDefeated;
             }
+            else
+            {
+                Modding.Logger.Log("Failed to reset failed Champ");
+            }
 
 
             if (PlayerData.instance.mageLordDefeated && (GrassRandoV2Mod.sd.mageDreamGrassBroken < 13))
@@ -389,7 +393,7 @@ namespace GrassRandoV2.IC
 
             SettingsLog.AfterLogSettings += LogGrassRandoSettings;
 
-            ModHooks.BeforeSavegameSaveHook += resetStuff;
+            //ModHooks.BeforeSavegameSaveHook += resetStuff;
 
         }
 
@@ -408,6 +412,10 @@ namespace GrassRandoV2.IC
                     Modding.Logger.Log("Error reseting dream boss encounters.");
                     Modding.Logger.LogError(e.ToString());
                 }
+            }
+            else
+            {
+                Modding.Logger.Log("Missing Dreamnail");
             }
         }
 

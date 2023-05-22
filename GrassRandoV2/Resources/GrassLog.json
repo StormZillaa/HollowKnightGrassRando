@@ -17307,7 +17307,7 @@
     "logicSubs": {},
     "sceneName": "Deepnest_East_Hornet",
     "usrName": "ash_grass_01_windy_Deepnest_East_Hornet",
-    "logic": "Deepnest_East_Hornet[left2] | (Deepnest_East_Hornet[left1] + Defeated_Hornet_2 + (RIGHTCLAW + (LEFTCLAW | WINGS)))",
+    "logic": "Deepnest_East_Hornet[left1] | (Deepnest_East_Hornet[left2] + Defeated_Hornet_2 + (RIGHTCLAW + (LEFTCLAW | WINGS)))",
     "persistantBool": "",
     "requiredSetting": "",
     "sprite": "grass_icon.png",

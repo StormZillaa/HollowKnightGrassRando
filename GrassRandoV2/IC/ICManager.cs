@@ -13,6 +13,7 @@ using ItemChanger.UIDefs;
 using RandomizerMod.Logging;
 using System.IO;
 using Newtonsoft.Json.Converters;
+using Modding;
 
 namespace GrassRandoV2.IC
 {
@@ -174,6 +175,17 @@ namespace GrassRandoV2.IC
 
         public static List<BreakableGrassLocation> bgl = new();
 
+
+        public static void TestToggleBoss()
+        {
+            
+            //this does reset the bosses, unsure of how to reset the dreamnail scene\
+            //might just use a room tele thing
+
+            PlayerData.instance.falseKnightDreamDefeated = !PlayerData.instance.falseKnightDreamDefeated;
+            PlayerData.instance.mageLordDreamDefeated = !PlayerData.instance.mageLordDreamDefeated;
+            PlayerData.instance.infectedKnightDreamDefeated = !PlayerData.instance.infectedKnightDreamDefeated;
+        }
 
         //adds items and locations to the rando
 
@@ -371,8 +383,21 @@ namespace GrassRandoV2.IC
 
             SettingsLog.AfterLogSettings += LogGrassRandoSettings;
 
+            ModHooks.BeforeSavegameSaveHook += resetStuff;
 
+        }
 
+        private void resetStuff(SaveGameData obj)
+        {
+            try
+            {
+                TestToggleBoss();
+                //Modding.Logger.Log("resetting bosses");
+            }
+            catch (Exception e)
+            {
+                Modding.Logger.Log("Error reseting dream boss encounters.");
+            }
         }
 
         private int RandoController_OnCalculateHash(RandoController arg1, int arg2)

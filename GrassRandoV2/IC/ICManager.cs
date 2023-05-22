@@ -178,13 +178,19 @@ namespace GrassRandoV2.IC
 
         public static void TestToggleBoss()
         {
-            
+
             //this does reset the bosses, unsure of how to reset the dreamnail scene\
             //might just use a room tele thing
 
-            PlayerData.instance.falseKnightDreamDefeated = !PlayerData.instance.falseKnightDreamDefeated;
-            PlayerData.instance.mageLordDreamDefeated = !PlayerData.instance.mageLordDreamDefeated;
-            PlayerData.instance.infectedKnightDreamDefeated = !PlayerData.instance.infectedKnightDreamDefeated;
+            if (PlayerData.instance.falseKnightDefeated && (GrassRandoV2Mod.sd.knightDreamGrassBroken < 23)) { 
+                PlayerData.instance.falseKnightDreamDefeated = !PlayerData.instance.falseKnightDreamDefeated;
+            }
+
+
+            if (PlayerData.instance.mageLordDefeated && (GrassRandoV2Mod.sd.mageDreamGrassBroken < 13))
+            {
+                PlayerData.instance.mageLordDreamDefeated = !PlayerData.instance.mageLordDreamDefeated;
+            }
         }
 
         //adds items and locations to the rando
@@ -389,14 +395,19 @@ namespace GrassRandoV2.IC
 
         private void resetStuff(SaveGameData obj)
         {
-            try
-            {
-                TestToggleBoss();
-                //Modding.Logger.Log("resetting bosses");
-            }
-            catch (Exception e)
-            {
-                Modding.Logger.Log("Error reseting dream boss encounters.");
+            //this should only trigger if the player is running dream grass in the rando
+            if (GrassRandoV2Mod.settings.randomizeDreamNailGrass && PlayerData.instance.hasDreamNail) {
+
+                try
+                {
+                    TestToggleBoss();
+                    //Modding.Logger.Log("resetting bosses");
+                }
+                catch (Exception e)
+                {
+                    Modding.Logger.Log("Error reseting dream boss encounters.");
+                    Modding.Logger.LogError(e.ToString());
+                }
             }
         }
 

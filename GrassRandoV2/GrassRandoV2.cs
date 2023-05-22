@@ -12,6 +12,8 @@ namespace GrassRandoV2
     public class SaveData
     {
         public List<string> brokenGrass = new List<string>();
+        public int knightDreamGrassBroken;
+        public int mageDreamGrassBroken;
     }
     public class GrassRandoV2Mod : Mod, ILocalSettings<SaveData>, IGlobalSettings<GrassRandoSettings>
     {
@@ -52,7 +54,7 @@ namespace GrassRandoV2
         {
             Log("Prepping the Grando");
 
-           Assembly ass;
+            Assembly ass;
 
             //item config manager, makes things more organized
             ICManager manager = new();

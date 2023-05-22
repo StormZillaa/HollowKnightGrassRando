@@ -79,7 +79,7 @@ namespace GrassRandoV2.IC
                         //Modding.Logger.Log("Broke a new grass!" + otherCollider.name.ToString() + " " + otherCollider.gameObject.scene.name.ToString());
 
                         //logs the grass in a usable form for debugging
-                        Modding.Logger.Log(otherCollider.gameObject.name.ToString() + ", " + gd.usrName);
+                        //Modding.Logger.Log(otherCollider.gameObject.name.ToString() + ", " + gd.usrName);
 
                         //this holds the message type that gets assigned for the
                         //item the grass drops upon breaking

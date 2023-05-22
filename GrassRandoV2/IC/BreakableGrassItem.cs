@@ -16,7 +16,7 @@ namespace GrassRandoV2.IC
             if (gd.sceneName.Contains("Dream_02_Mage_Lord")) { GrassRandoV2Mod.sd.mageDreamGrassBroken++; }
             if (gd.sceneName.Contains("Dream_02_Mage_Lord")) { GrassRandoV2Mod.sd.mageDreamGrassBroken++; }
 
-            Modding.Logger.Log("Total Grass: " + GrassRandoV2Mod.sd.brokenGrass.Count);
+            //Modding.Logger.Log("Total Grass: " + GrassRandoV2Mod.sd.brokenGrass.Count);
 
             //Modding.Logger.Log("Item given");
 

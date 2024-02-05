@@ -182,7 +182,7 @@ namespace GrassRandoV2.IC
             //this does reset the bosses, unsure of how to reset the dreamnail scene\
             //might just use a room tele thing
 
-            if (PlayerData.instance.falseKnightDefeated && (GrassRandoV2Mod.sd.knightDreamGrassBroken < 23)) { 
+            if (PlayerData.instance.falseKnightDefeated && (GrassRandoV2Mod.Instance.sd.knightDreamGrassBroken < 23)) { 
                 PlayerData.instance.falseKnightDreamDefeated = !PlayerData.instance.falseKnightDreamDefeated;
             }
             else
@@ -191,7 +191,7 @@ namespace GrassRandoV2.IC
             }
 
 
-            if (PlayerData.instance.mageLordDefeated && (GrassRandoV2Mod.sd.mageDreamGrassBroken < 13))
+            if (PlayerData.instance.mageLordDefeated && (GrassRandoV2Mod.Instance.sd.mageDreamGrassBroken < 13))
             {
                 PlayerData.instance.mageLordDreamDefeated = !PlayerData.instance.mageLordDreamDefeated;
             }

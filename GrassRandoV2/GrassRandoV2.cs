@@ -6,20 +6,25 @@ using GrassRandoV2.Rando;
 using RandoSettingsManager;
 using RandoSettingsManager.SettingsManagement;
 using System.Reflection;
+using GrassCore;
 
 namespace GrassRandoV2
 {
     public class SaveData
     {
-        public List<string> brokenGrass = new List<string>();
+        public string? serializedGrassRegister;
         public int knightDreamGrassBroken;
         public int mageDreamGrassBroken;
     }
     public class GrassRandoV2Mod : Mod, ILocalSettings<SaveData>, IGlobalSettings<GrassRandoSettings>
     {
-        public static SaveData sd = new SaveData();
+        public static GrassRandoV2Mod Instance;
+
+        public SaveData sd = new();
+
+        public readonly GrassRegister_Global grassRegister = new();
+        public static GrassRandoSettings settings = new();
         //public static RandoSettings settings = new RandoSettings(new GrassRandoSettings(), new GrassLocationSettings());
-        public static GrassRandoSettings settings = new GrassRandoSettings();
         //public static GrassLocationSettings gls = settings.GetLocationSettings();
 
         //public static GrassRandoSettings st = new GrassRandoSettings();
@@ -29,32 +34,15 @@ namespace GrassRandoV2
         new public string GetName() => "Grass Randomizer";
         public override string GetVersion() => "v1.0";
 
-        private static GrassRandoV2Mod? _instance;
-
-        internal static GrassRandoV2Mod Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    throw new InvalidOperationException($"An instance of {nameof(GrassRandoV2Mod)} was never constructed");
-                }
-                return _instance;
-            }
-        }
-
-        //returns the current instance of the mod
         public GrassRandoV2Mod() : base("GrassRandoV2")
         {
-            _instance = this;
+            Instance = this;
         }
 
         //initilizations for the mod
         public override void Initialize()
         {
             Log("Prepping the Grando");
-
-            Assembly ass;
 
             //item config manager, makes things more organized
             ICManager manager = new();
@@ -71,6 +59,12 @@ namespace GrassRandoV2
             {
 
             }
+
+            GrassCore.GrassCore.Instance.CutsEnabled = true; // Get grass events from GrassCore
+            GrassCore.GrassCore.Instance.WeedkillerEnabled = true; // Despawn already collected grass
+            GrassCore.GrassCore.Instance.DisconnectWeedKiller = true; // Do not use GrassCore's internal grass dict (we will use our own)
+
+            GrassCore.WeedKiller.Instance.Blacklist = grassRegister._grassStates; // Use our internal tracker for WeedKiller
 
             //registers the items, locations, and then sets up the item hooks
             manager.RegisterItemsAndLocations();
@@ -98,10 +92,13 @@ namespace GrassRandoV2
         public void OnLoadLocal(SaveData s)
         {
             sd = s;
+            grassRegister.Clear();
+            grassRegister.AddSerializedData(s.serializedGrassRegister);
         }
 
         public SaveData OnSaveLocal()
         {
+            sd.serializedGrassRegister = grassRegister.Serialize();
             return sd;
         }
 

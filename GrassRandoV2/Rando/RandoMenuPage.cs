@@ -69,15 +69,13 @@ namespace GrassRandoV2.Rando
         private static bool HandleButton(MenuPage landingPage, out SmallButton button)
         {
             button = Instance.openGrassRandoSet;
+            button.OnClick += Instance.SetTopLevelButtonColor;
             return true;
         }
 
-        private void SetTopLevelButtonColor()
+        public void SetTopLevelButtonColor()
         {
-            if (openGrassRandoSet != null)
-            {
-                openGrassRandoSet.Text.color = Colors.DEFAULT_COLOR;
-            }
+             openGrassRandoSet.Text.color = GrassRandoV2Mod.settings.anygrass ? Colors.TRUE_COLOR : Colors.DEFAULT_COLOR;
         }
 
         private static void ConstructMenu(MenuPage landingPage) => Instance = new(landingPage);

@@ -18,7 +18,6 @@ quantum grass?? -> unsure if this is actually in the mod atm
 
 TODO:
 - implement grass shop
-- see if c-dash breaking the grass can be added for the checks
 - maybe figure out quantum grass
 
 update logic list:

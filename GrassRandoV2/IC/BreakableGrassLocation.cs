@@ -21,39 +21,25 @@ namespace GrassRandoV2.IC
 
         protected override void OnLoad()
         {
-            // Hook GrassCore's event;
-            GrassCore.GrassEventDispatcher.Instance.GrassWasCut += GrassBroken;
+            LocationRegistrar.Instance.Add(this);
             if (gd.fsmType == "quantum grass")
             {
 
             }
-
         }
 
-        private void GrassBroken(GrassKey grassKey)
+        protected override void OnUnload() { }
+
+        public void Obtain()
         {
-            if (!CompareGrassBreak(grassKey)) { return; }
-            
             if (!Placement.AllObtained())
             {
-                GrassRegister_Rando.Instance.TryCut(grassKey);
                 MessageType mt = GrassRandoV2Mod.settings.DisplayPickups ? MessageType.Corner : MessageType.None;
                 Placement.GiveAll(new GiveInfo() { FlingType = FlingType.DirectDeposit, MessageType = mt });
+            } else
+            {
+                GrassRandoV2Mod.Instance.LogWarn($"Obtain called on pre-obtained grass {gd.ToGrassKey()}");
             }
         }
-
-        private bool CompareGrassBreak(GrassKey grassKey)
-        {
-            if (grassKey.SceneName != sceneName) { return false; }
-            if (grassKey.ObjectName != objectName) { return false; }
-            return grassKey.Position == new Vector2(gd.locations.First().x, gd.locations.First().y);
-        }
-
-
-
-        protected override void OnUnload()
-        {
-        }
-
     }
 }

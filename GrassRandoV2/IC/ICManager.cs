@@ -14,6 +14,7 @@ using RandomizerMod.Logging;
 using System.IO;
 using Newtonsoft.Json.Converters;
 using Modding;
+using GrassCore;
 
 namespace GrassRandoV2.IC
 {
@@ -40,9 +41,10 @@ namespace GrassRandoV2.IC
             _js.Converters.Add(new StringEnumConverter());
         }
     }
+    
     public class ICManager
     {
-        #pragma warning disable 0649
+        #pragma warning disable 0649, 8618
         public class grassdata
         {
             public class RelativeLocation
@@ -173,8 +175,10 @@ namespace GrassRandoV2.IC
 
         public readonly static List<grassdata> gd = JsonUtil.Deserialize<List<grassdata>>("GrassRandoV2.Resources.GrassLog.json");
 
-        public static List<BreakableGrassLocation> bgl = new();
-
+        /// <summary>
+        /// Contains all grass locations
+        /// </summary>
+        public static LocationRegistrar GrassLocations = LocationRegistrar.Instance;
 
         public static void TestToggleBoss()
         {
@@ -231,11 +235,10 @@ namespace GrassRandoV2.IC
                     }
                 };
 
-                //GSL.Init();
+                // Registering the grass location to LocationRegistrar is handled by the GrassLocations durin OnLoad
+       
 
-               bgl.Add(GSL);
-
-                //sets up the item deferninition for the item changer mod
+                //sets up the item definition for the item changer mod
                 BreakableGrassItem grassItem = new()
                 {
                     objectName = grass.gameObj,

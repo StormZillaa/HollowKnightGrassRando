@@ -12,7 +12,7 @@ namespace GrassRandoV2
 {
     public class SaveData
     {
-        public string? serializedGrassRegister;
+        public string? serializedGrassRegister; // TODO: replace with grass register inferred from ItemChanger
         public int knightDreamGrassBroken;
         public int mageDreamGrassBroken;
     }
